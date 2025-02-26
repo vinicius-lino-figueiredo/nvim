@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.opt.number = true
+vim.opt.colorcolumn = "121"
 require("config.lazy")
 require("config.telescope")
 require("config.lsp")
