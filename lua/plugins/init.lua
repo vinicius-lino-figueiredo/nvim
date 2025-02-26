@@ -10,4 +10,12 @@ return {
 			})
 		end,
 	},
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.8",
+		dependencies = {
+			"nvim-telescope/telescope-live-grep-args.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+	},
 }
