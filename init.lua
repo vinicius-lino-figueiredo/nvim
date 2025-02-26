@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.opt.number = true
 require("config.lazy")
 require("config.telescope")
 require("config.lsp")
