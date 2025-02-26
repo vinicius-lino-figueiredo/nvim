@@ -75,4 +75,5 @@ return {
 	{ "rcarriga/nvim-dap-ui" },
 	{ "nvim-neotest/nvim-nio" },
 	{ "leoluz/nvim-dap-go" },
+	{ "junegunn/vim-easy-align" },
 }
