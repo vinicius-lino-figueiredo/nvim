@@ -10,3 +10,10 @@ require("config.dotenv")
 require("config.dap")
 require("config.easy-align")
 require("config.null-ls")
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function()
+		vim.lsp.buf.format()
+	end,
+})
