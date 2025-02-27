@@ -11,6 +11,7 @@ require("config.dotenv")
 require("config.dap")
 require("config.easy-align")
 require("config.null-ls")
+require("config.godap")
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
