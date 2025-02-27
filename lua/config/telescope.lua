@@ -8,6 +8,7 @@ vim.keymap.set("n", "<leader>fs", function()
 		symbols = { "Function", "Method", "Class", "Interface", "struct" },
 	})
 end, { silent = true, noremap = true })
+vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
 vim.keymap.set("n", "<leader>fe", function()
 	require("telescope.builtin").diagnostics()
 end, { silent = true, noremap = true })
