@@ -1,6 +1,55 @@
 local dap, dapui = require("dap"), require("dapui")
 local dapgo = require("dap-go")
-dapui.setup()
+dapui.setup({
+	layouts = {
+		{
+			elements = {
+				{ id = "breakpoints", size = 0.25 },
+				{ id = "stacks", size = 0.25 },
+				{ id = "watches", size = 0.25 },
+			},
+			size = 40,
+			position = "left",
+		},
+		{
+			elements = {
+				"repl",
+				"console",
+			},
+			size = 10,
+			position = "bottom",
+		},
+	},
+	floating = {
+		max_height = nil,
+		max_width = nil,
+		border = "single",
+		mappings = {
+			["close"] = { "q", "<Esc>" },
+		},
+	},
+	controls = {
+		enabled = vim.fn.exists("+winbar") == 1,
+		element = "repl",
+		icons = {
+			pause = "",
+			play = "",
+			step_into = "",
+			step_over = "",
+			step_out = "",
+			step_back = "",
+			run_last = "",
+			terminate = "",
+			disconnect = "",
+		},
+	},
+	render = {
+		max_type_length = nil,
+		max_value_lines = 100,
+		indent = 1,
+	},
+})
+
 dapgo.setup()
 dap.listeners.before.attach.dapui_config = function()
 	dapui.open()
@@ -8,6 +57,28 @@ end
 dap.listeners.before.launch.dapui_config = function()
 	dapui.open()
 end
+
+function toggle_floating_scopes()
+	local d = require("dapui")
+	local s, r
+	for _, w in ipairs(vim.api.nvim_list_wins()) do
+		local f = vim.bo[vim.api.nvim_win_get_buf(w)].filetype
+		if f == "dapui_scopes" then
+			s = w
+			break
+		end
+	end
+	local W, H = math.floor(vim.o.columns * 0.6), math.floor(vim.o.lines * 0.6)
+	if s and vim.api.nvim_win_is_valid(s) then
+		vim.api.nvim_win_close(s, true)
+	else
+		if r and vim.api.nvim_win_is_valid(r) then
+			vim.api.nvim_win_close(r, true)
+		end
+		d.float_element("scopes", { width = W, height = H, enter = true, position = "center" })
+	end
+end
+vim.keymap.set("n", "<F6>", toggle_floating_scopes, { noremap = true, silent = true })
 
 dap.configurations.go = {
 	{
