@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.opt.number = true
 vim.opt.colorcolumn = "121"
+vim.keymap.set("n", "<Leader>e", ":Ntree<CR>")
 require("config.lazy")
 require("config.telescope")
 require("config.lsp")
