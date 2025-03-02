@@ -77,4 +77,10 @@ return {
 	{ "leoluz/nvim-dap-go" },
 	{ "junegunn/vim-easy-align" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
+
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^5", -- Recommended
+		lazy = false, -- This plugin is already lazy
+	},
 }
