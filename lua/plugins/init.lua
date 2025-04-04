@@ -76,7 +76,7 @@ return {
 	{ "nvim-neotest/nvim-nio" },
 	{ "leoluz/nvim-dap-go" },
 	{ "junegunn/vim-easy-align" },
-	{ "jose-elias-alvarez/null-ls.nvim" },
+	{ "nvimtools/none-ls.nvim" },
 
 	{
 		"mrcjkb/rustaceanvim",
