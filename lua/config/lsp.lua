@@ -40,5 +40,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- })
 
 require('lspconfig').gopls.setup({})
-
+require("lspconfig").ts_ls.setup({})
 

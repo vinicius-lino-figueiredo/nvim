@@ -13,6 +13,8 @@ require("config.dap")
 require("config.easy-align")
 require("config.null-ls")
 require("config.godap")
+require("config.schemastore")
+require("config.todo-comments")
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",

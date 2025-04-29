@@ -76,11 +76,45 @@ return {
 	{ "nvim-neotest/nvim-nio" },
 	{ "leoluz/nvim-dap-go" },
 	{ "junegunn/vim-easy-align" },
-	{ "jose-elias-alvarez/null-ls.nvim" },
+	{ "nvimtools/none-ls.nvim" },
 
 	{
 		"mrcjkb/rustaceanvim",
 		version = "^5", -- Recommended
 		lazy = false, -- This plugin is already lazy
+	},
+	{ "b0o/schemastore.nvim" },
+	{
+		"johmsalas/text-case.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("textcase").setup({})
+			require("telescope").load_extension("textcase")
+		end,
+		keys = {
+			"ga", -- Default invocation prefix
+			{ "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Telescope" },
+		},
+		cmd = {
+			-- NOTE: The Subs command name can be customized via the option "substitude_command_name"
+			"Subs",
+			"TextCaseOpenTelescope",
+			"TextCaseOpenTelescopeQuickChange",
+			"TextCaseOpenTelescopeLSPChange",
+			"TextCaseStartReplacingCommand",
+		},
+		-- If you want to use the interactive feature of the `Subs` command right away, text-case.nvim
+		-- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
+		-- available after the first executing of it or after a keymap of text-case.nvim has been used.
+		lazy = false,
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
 	},
 }
