@@ -41,4 +41,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 require('lspconfig').gopls.setup({})
 require("lspconfig").ts_ls.setup({})
+require("lspconfig").lua_ls.setup({
+	settings = {
+		Lua = {
+			workspace = { checkThirdParty = false, library = vim.api.nvim_get_runtime_file("", true) },
+			telemetry = { enable = false },
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+})
 
