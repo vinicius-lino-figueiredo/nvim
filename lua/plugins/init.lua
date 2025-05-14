@@ -125,4 +125,8 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },
 	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 }
