@@ -15,7 +15,6 @@ require("config.null-ls")
 require("config.godap")
 require("config.schemastore")
 require("config.todo-comments")
-require("config.mason")
 require("config.lualine")
 
 vim.api.nvim_create_autocmd("BufWritePre", {
