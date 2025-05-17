@@ -117,4 +117,12 @@ return {
 			-- refer to the configuration section below
 		},
 	},
+	{
+		"mason-org/mason.nvim",
+		config = true,
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+	},
 }

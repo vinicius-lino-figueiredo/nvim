@@ -40,5 +40,39 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- })
 
 require('lspconfig').gopls.setup({})
-require("lspconfig").ts_ls.setup({})
+require("lspconfig").ts_ls.setup({
+	on_attach = function(_, bufnr)
+		vim.api.nvim_set_option_value("tabstop", 2, { buf = bufnr })
+		vim.api.nvim_set_option_value("shiftwidth", 2, { buf = bufnr })
+		vim.api.nvim_set_option_value("softtabstop", 2, { buf = bufnr })
+		vim.api.nvim_set_option_value("expandtab", true, { buf = bufnr })
+	end,
+})
 
+local configs = {
+	gopls = {},
+	ts_ls = {
+		on_attach = function(_, bufnr)
+			vim.api.nvim_set_option_value("tabstop", 2, { buf = bufnr })
+			vim.api.nvim_set_option_value("shiftwidth", 2, { buf = bufnr })
+			vim.api.nvim_set_option_value("softtabstop", 2, { buf = bufnr })
+			vim.api.nvim_set_option_value("expandtab", true, { buf = bufnr })
+		end,
+	},
+	lua_ls = {
+		settings = {
+			Lua = {
+				workspace = { checkThirdParty = false, library = vim.api.nvim_get_runtime_file("", true) },
+				telemetry = { enable = false },
+				diagnostics = {
+					globals = { "vim" },
+				},
+			},
+		},
+	},
+}
+
+local lspconfig = require("lspconfig")
+for key, value in pairs(configs) do
+	lspconfig[key].setup(value)
+end
