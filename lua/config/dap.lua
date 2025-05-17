@@ -1,5 +1,4 @@
 local dap, dapui = require("dap"), require("dapui")
-local dapgo = require("dap-go")
 dapui.setup({
 	layouts = {
 		{
@@ -50,7 +49,6 @@ dapui.setup({
 	},
 })
 
-dapgo.setup()
 dap.listeners.before.attach.dapui_config = function()
 	dapui.open()
 end
