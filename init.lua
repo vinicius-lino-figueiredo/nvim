@@ -17,6 +17,7 @@ require("config.schemastore")
 require("config.todo-comments")
 require("config.lualine")
 require("config.nvim-treesitter-textobjects")
+require("config.toggleterm")
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
