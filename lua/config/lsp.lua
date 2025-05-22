@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
     local opts = {buffer = event.buf}
 
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover { border = "single" } end , opts)
     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
     vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true })
     vim.keymap.set('n', '<leader>gi', vim.lsp.buf.code_action, { desc = 'Gerar implementação de interface' })
     --returar a linha abaixo e colocar no init
-    vim.keymap.set('n', '<leader>o', function() vim.diagnostic.open_float() end, { noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>o', function() vim.diagnostic.open_float(nil, { border = "rounded" }) end, { noremap = true, silent = true })
   end,
 })
 
