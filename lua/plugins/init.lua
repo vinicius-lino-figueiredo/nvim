@@ -12,11 +12,15 @@ return {
 		},
 	},
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,
+		"catppuccin/nvim",
+		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			vim.cmd("colorscheme tokyonight")
+			require("catppuccin").setup({
+				flavour = "mocha", -- latte, frappe, macchiato, mocha
+			})
+			-- setup must be called before loading
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 	{ "hrsh7th/nvim-cmp" },
