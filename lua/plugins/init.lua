@@ -111,4 +111,8 @@ return {
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
+	{
+		"mason-org/mason.nvim",
+		config = true,
+	},
 }
