@@ -76,17 +76,16 @@ function toggle_floating_scopes()
 		d.float_element("scopes", { width = W, height = H, enter = true, position = "center" })
 	end
 end
+
 vim.keymap.set("n", "<F6>", toggle_floating_scopes, { noremap = true, silent = true })
 
-dap.configurations.go = {
-	{
-		type = "go",
-		name = "Debug",
-		request = "launch",
-		program = "${workspaceFolder}/main.go",
-		envFile = "${workspaceFolder}/.env", -- Carregar o .env do diretório do projeto
-	},
-}
+local adapters = require("config.adapters")
+for n, v in pairs(adapters.adapters) do
+	dap.adapters[n] = v
+end
+for n, v in pairs(adapters.configs) do
+	dap.configurations[n] = v
+end
 
 -- Include the next few lines until the comment only if you feel you need it
 -- dap.listeners.before.event_terminated.dapui_config = function()
