@@ -33,3 +33,19 @@ require("lazy").setup({
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })
+
+require("config.telescope")
+require("config.lsp")
+require("config.cmp")
+require("config.gitsigns")
+require("config.dotenv")
+require("config.dap")
+require("config.easy-align")
+require("config.null-ls")
+require("config.godap")
+require("config.schemastore")
+require("config.todo-comments")
+require("config.lualine")
+require("config.nvim-treesitter-textobjects")
+require("config.toggleterm")
+require("config.harpoon")
