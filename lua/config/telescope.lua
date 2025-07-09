@@ -3,11 +3,7 @@ vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find f
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
-vim.keymap.set("n", "<leader>fs", function()
-	require("telescope.builtin").lsp_document_symbols({
-		symbols = { "Function", "Method", "Class", "Interface", "struct" },
-	})
-end, { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Telescope Document Symbols" })
 vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
 vim.keymap.set("n", "<leader>fe", function()
 	require("telescope.builtin").diagnostics()

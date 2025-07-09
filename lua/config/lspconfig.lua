@@ -1,4 +1,14 @@
 return {
+	omnisharp = {
+		cmd = { vim.fn.stdpath("data") .. "/mason/bin/OmniSharp" },
+		-- opções básicas aqui
+		on_attach = function(client, bufnr)
+			-- keymaps, etc
+		end,
+		flags = {
+			debounce_text_changes = 150,
+		},
+	},
 	gopls = {},
 	ts_ls = {
 		on_attach = function(_, bufnr)
@@ -19,4 +29,6 @@ return {
 			},
 		},
 	},
+	dockerls = {},
+	clangd = {},
 }
