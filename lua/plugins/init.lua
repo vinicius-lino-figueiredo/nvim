@@ -126,4 +126,9 @@ return {
 			})
 		end,
 	},
+	{
+		"chentoast/marks.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
 }
