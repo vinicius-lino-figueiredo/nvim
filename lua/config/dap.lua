@@ -3,15 +3,6 @@ dapui.setup({
 	layouts = {
 		{
 			elements = {
-				{ id = "breakpoints", size = 0.25 },
-				{ id = "stacks", size = 0.25 },
-				{ id = "watches", size = 0.25 },
-			},
-			size = 40,
-			position = "left",
-		},
-		{
-			elements = {
 				"repl",
 				"console",
 			},
