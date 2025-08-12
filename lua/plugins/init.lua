@@ -131,4 +131,8 @@ return {
 		event = "VeryLazy",
 		opts = {},
 	},
+	{
+		"lukas-reineke/virt-column.nvim",
+		opts = {},
+	},
 }
