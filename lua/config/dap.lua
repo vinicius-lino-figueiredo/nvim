@@ -118,8 +118,17 @@ vim.keymap.set("n", "<Leader>X", function()
 	require("dap").terminate()
 end)
 vim.keymap.set("n", "<Leader>w", function()
-	dapui.open()
+	local ok, err = pcall(dapui.open)
+	if not ok then
+		print("Error opening DAP UI: " .. err)
+		-- Try to reinitialize
+		dapui.setup()
+		dapui.open()
+	end
 end)
 vim.keymap.set("n", "<Leader>W", function()
-	dapui.close()
+	local ok, err = pcall(dapui.close)
+	if not ok then
+		print("Error closing DAP UI: " .. err)
+	end
 end)
