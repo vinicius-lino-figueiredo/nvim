@@ -135,4 +135,11 @@ return {
 		"lukas-reineke/virt-column.nvim",
 		opts = {},
 	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "InsertEnter",
+		opts = {
+			-- cfg options
+		},
+	},
 }
