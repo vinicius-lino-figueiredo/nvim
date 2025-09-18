@@ -30,8 +30,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local lspconfig = require("lspconfig")
 local configs = require("config.lspconfig")
 for key, value in pairs(configs) do
 	vim.lsp.config(key, value)
+	vim.lsp.enable(key)
 end
