@@ -31,4 +31,5 @@ return {
 	},
 	dockerls = {},
 	clangd = {},
+	lemminx = {},
 }
