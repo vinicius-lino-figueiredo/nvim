@@ -33,5 +33,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 local lspconfig = require("lspconfig")
 local configs = require("config.lspconfig")
 for key, value in pairs(configs) do
-	lspconfig[key].setup(value)
+	vim.lsp.config(key, value)
 end

@@ -1,5 +1,4 @@
 local cmp = require'cmp'
-local lspconfig = require'lspconfig'
 
 -- Configuração do nvim-cmp
 cmp.setup({
@@ -26,7 +25,7 @@ cmp.setup({
 })
 
 -- LSP do Go (gopls)
-lspconfig.gopls.setup({
+vim.lsp.config('gopls', {
   capabilities = require'cmp_nvim_lsp'.default_capabilities(),
 })
 

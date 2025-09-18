@@ -126,4 +126,20 @@ return {
 			})
 		end,
 	},
+	{
+		"chentoast/marks.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+	{
+		"lukas-reineke/virt-column.nvim",
+		opts = {},
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "InsertEnter",
+		opts = {
+			-- cfg options
+		},
+	},
 }
