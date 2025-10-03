@@ -32,4 +32,5 @@ return {
 	dockerls = {},
 	clangd = {},
 	lemminx = {},
+	bashls = {},
 }
