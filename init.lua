@@ -58,7 +58,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.g.mapleader = " "
 vim.opt.number = true
 vim.opt.colorcolumn = "81"
-vim.keymap.set("n", "<Leader>e", ":Ntree<CR>")
 
 require("config.lazy")
 
