@@ -67,3 +67,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		vim.lsp.buf.format()
 	end,
 })
+vim.filetype.add({
+	filename = {
+		[".env"] = ".env",
+	},
+	pattern = {
+		["%.env%..*"] = ".env",
+	},
+})
