@@ -14,14 +14,31 @@ return {
 			command = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/bash-debug-adapter",
 			name = "bashdb",
 		},
+		go = {
+			type = "server",
+			port = "${port}",
+			executable = {
+				command = "dlv",
+				args = { "dap", "-l", "127.0.0.1:${port}" },
+			},
+		},
 	},
 	configs = {
 		go = {
 			{
 				type = "go",
-				name = "Debug",
+				name = "Debug Package",
 				request = "launch",
-				program = "${workspaceFolder}/main.go",
+				program = "./${relativeFileDirname}",
+				outputMode = "remote",
+			},
+			{
+				type = "go",
+				name = "Debug Package (tests)",
+				request = "launch",
+				mode = "test",
+				program = "./${relativeFileDirname}",
+				outputMode = "remote",
 			},
 		},
 		javascript = {

@@ -55,7 +55,6 @@ return {
 	{ "mfussenegger/nvim-dap" },
 	{ "rcarriga/nvim-dap-ui" },
 	{ "nvim-neotest/nvim-nio" },
-	{ "leoluz/nvim-dap-go" },
 	{ "junegunn/vim-easy-align" },
 	{ "nvimtools/none-ls.nvim" },
 
