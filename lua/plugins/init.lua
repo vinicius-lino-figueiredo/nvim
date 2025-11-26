@@ -204,4 +204,5 @@ return {
 			provider_patterns = true, -- true by default, when false will not check provider patterns
 		},
 	},
+	{ "rcarriga/nvim-notify" },
 }
