@@ -55,7 +55,6 @@ return {
 	{ "mfussenegger/nvim-dap" },
 	{ "rcarriga/nvim-dap-ui" },
 	{ "nvim-neotest/nvim-nio" },
-	{ "leoluz/nvim-dap-go" },
 	{ "junegunn/vim-easy-align" },
 	{ "nvimtools/none-ls.nvim" },
 
@@ -142,4 +141,67 @@ return {
 			-- cfg options
 		},
 	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		keys = {
+			{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
+		},
+		lazy = false,
+	},
+	{
+		"ph1losof/ecolog.nvim",
+		-- Optional: you can add some keybindings
+		keys = {
+			{ "<leader>ge", "<cmd>EcologGoto<cr>", desc = "Go to env file" },
+			{ "<leader>pp", "<cmd>EcologShelterLinePeek<cr>", desc = "Ecolog peek variable" },
+			{ "<leader>es", "<cmd>EcologSelect<cr>", desc = "Switch env file" },
+		},
+		-- Lazy loading is done internally
+		lazy = false,
+		-- config = function()
+		-- 	-- require("telescope").load_extension("ecolog")
+		-- end,
+		opts = {
+			integrations = { nvim_cmp = true },
+			-- Enables shelter mode for sensitive values
+			shelter = {
+				configuration = {
+					-- Partial mode configuration:
+					-- false: completely mask values (default)
+					-- true: use default partial masking settings
+					-- table: customize partial masking
+					-- partial_mode = false,
+					-- or with custom settings:
+					partial_mode = false,
+					mask_char = " ", -- Character used for masking
+					mask_length = nil, -- Optional: fixed length for masked portion (defaults to value length)
+					skip_comments = true, -- Skip masking comment lines in environment files (default: false)
+				},
+				modules = {
+					cmp = true, -- Enabled to mask values in completion
+					peek = false, -- Enable to mask values in peek view
+					files = true, -- Enabled to mask values in file buffers
+					telescope = false, -- Enable to mask values in telescope integration
+					telescope_previewer = true, -- Enable to mask values in telescope preview buffers
+					fzf = false, -- Enable to mask values in fzf picker
+					fzf_previewer = false, -- Enable to mask values in fzf preview buffers
+					snacks_previewer = false, -- Enable to mask values in snacks previewer
+					snacks = false, -- Enable to mask values in snacks picker
+				},
+			},
+			-- true by default, enables built-in types (database_url, url, etc.)
+			types = true,
+			path = vim.fn.getcwd(), -- Path to search for .env files
+			preferred_environment = "development", -- Optional: prioritize specific env files
+			-- Controls how environment variables are extracted from code and how cmp works
+			provider_patterns = true, -- true by default, when false will not check provider patterns
+		},
+	},
+	{ "rcarriga/nvim-notify" },
 }

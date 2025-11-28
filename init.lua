@@ -7,8 +7,8 @@ vim.g.have_nerd_font = true
 -- [[ Setting options ]]
 
 -- Make line numbers default
-vim.o.number = true
--- vim.o.relativenumber = true
+-- vim.o.number = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = "a"
@@ -58,7 +58,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.g.mapleader = " "
 vim.opt.number = true
 vim.opt.colorcolumn = "81"
-vim.keymap.set("n", "<Leader>e", ":Ntree<CR>")
 
 require("config.lazy")
 
@@ -67,4 +66,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
 		vim.lsp.buf.format()
 	end,
+})
+vim.filetype.add({
+	filename = {
+		[".env"] = ".env",
+	},
+	pattern = {
+		["%.env%..*"] = ".env",
+	},
 })

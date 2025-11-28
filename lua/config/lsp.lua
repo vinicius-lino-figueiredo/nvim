@@ -30,8 +30,32 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local lspconfig = require("lspconfig")
+-- Limita linhas vazias consecutivas em arquivos Odin
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.odin",
+	callback = function()
+		local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+		local new_lines = {}
+		local blank_count = 0
+
+		for _, line in ipairs(lines) do
+			if line:match("^%s*$") then
+				blank_count = blank_count + 1
+				if blank_count <= 1 then
+					table.insert(new_lines, line)
+				end
+			else
+				blank_count = 0
+				table.insert(new_lines, line)
+			end
+		end
+
+		vim.api.nvim_buf_set_lines(0, 0, -1, false, new_lines)
+	end,
+})
+
 local configs = require("config.lspconfig")
 for key, value in pairs(configs) do
 	vim.lsp.config(key, value)
+	vim.lsp.enable(key)
 end

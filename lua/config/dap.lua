@@ -1,10 +1,11 @@
 local dap, dapui = require("dap"), require("dapui")
+
+---@diagnostic disable-next-line:missing-fields
 dapui.setup({
 	layouts = {
 		{
 			elements = {
 				"repl",
-				"console",
 			},
 			size = 10,
 			position = "bottom",
@@ -40,15 +41,10 @@ dapui.setup({
 	},
 })
 
-dap.listeners.before.attach.dapui_config = function()
-	dapui.open()
-end
-dap.listeners.before.launch.dapui_config = function()
-	dapui.open()
-end
+dap.listeners.before.attach.dapui_config = dapui.open
+dap.listeners.before.launch.dapui_config = dapui.open
 
-function toggle_floating_scopes()
-	local d = require("dapui")
+local function toggle_floating_scopes()
 	local s, r
 	for _, w in ipairs(vim.api.nvim_list_wins()) do
 		local f = vim.bo[vim.api.nvim_win_get_buf(w)].filetype
@@ -57,15 +53,25 @@ function toggle_floating_scopes()
 			break
 		end
 	end
-	local W, H = math.floor(vim.o.columns * 0.6), math.floor(vim.o.lines * 0.6)
+
+	local w = math.floor(vim.o.columns * 0.6)
+	local h = math.floor(vim.o.lines * 0.6)
+
 	if s and vim.api.nvim_win_is_valid(s) then
 		vim.api.nvim_win_close(s, true)
-	else
-		if r and vim.api.nvim_win_is_valid(r) then
-			vim.api.nvim_win_close(r, true)
-		end
-		d.float_element("scopes", { width = W, height = H, enter = true, position = "center" })
+		return
 	end
+
+	if r and vim.api.nvim_win_is_valid(r) then
+		vim.api.nvim_win_close(r, true)
+	end
+	dapui.float_element("scopes", {
+		title = "Scopes",
+		width = w,
+		height = h,
+		enter = true,
+		position = "center",
+	})
 end
 
 vim.keymap.set("n", "<F6>", toggle_floating_scopes, { noremap = true, silent = true })
@@ -78,57 +84,34 @@ for n, v in pairs(adapters.configs) do
 	dap.configurations[n] = v
 end
 
--- Include the next few lines until the comment only if you feel you need it
--- dap.listeners.before.event_terminated.dapui_config = function()
---  dapui.close()
--- end
--- dap.listeners.before.event_exited.dapui_config = function()
---  dapui.close()
--- end
--- Include everything after this
-
-vim.keymap.set("n", "<F5>", function()
-	require("dap").continue()
-end)
-vim.keymap.set("n", "<F10>", function()
-	require("dap").step_over()
-end)
-vim.keymap.set("n", "<F11>", function()
-	require("dap").step_into()
-end)
-vim.keymap.set("n", "<F12>", function()
-	require("dap").step_out()
-end)
-vim.keymap.set("n", "<Leader>q", function()
-	require("dap").toggle_breakpoint()
-end)
+vim.keymap.set("n", "<F5>", ":DapContinue<CR>")
+vim.keymap.set("n", "<F10>", ":DapStepOver<CR>")
+vim.keymap.set("n", "<F11>", ":DapStepInto<CR>")
+vim.keymap.set("n", "<F12>", ":DapStepOut<CR>")
+vim.keymap.set("n", "<Leader>q", ":DapToggleBreakpoint<CR>")
 vim.keymap.set("n", "<Leader>Q", function()
-	require("dap").set_breakpoint()
+	dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
 end)
 vim.keymap.set("n", "<Leader>lp", function()
-	require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+	dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 end)
-vim.keymap.set("n", "<Leader>dr", function()
-	require("dap").repl.open()
-end)
-vim.keymap.set("n", "<Leader>dl", function()
-	require("dap").run_last()
-end)
-vim.keymap.set("n", "<Leader>X", function()
-	require("dap").terminate()
-end)
-vim.keymap.set("n", "<Leader>w", function()
-	local ok, err = pcall(dapui.open)
-	if not ok then
-		print("Error opening DAP UI: " .. err)
-		-- Try to reinitialize
-		dapui.setup()
-		dapui.open()
+vim.keymap.set("n", "<Leader>dr", ":ReplTogle")
+vim.keymap.set("n", "<Leader>dl", ":DapRunkast<CR>")
+vim.keymap.set("n", "<Leader>X", ":DapTerminate<CR>")
+vim.keymap.set("n", "<Leader>w", ":DapUiToggle<CR>")
+
+dap.listeners.after.event_stopped["notify_others"] = function(_, body)
+	if body.reason ~= "breakpoint" then
+		return
 	end
-end)
-vim.keymap.set("n", "<Leader>W", function()
-	local ok, err = pcall(dapui.close)
-	if not ok then
-		print("Error closing DAP UI: " .. err)
-	end
-end)
+	vim.schedule(function()
+		vim.fn.jobstart({
+			"nvim-ctrl",
+			string.format(
+				'lua if %s ~= vim.fn.getpid() then require("notify")("Debug stopped at breakpoint on pid %s", vim.log.levels.INFO, {title="Breakpoint"}) end',
+				vim.fn.getpid(),
+				vim.fn.getpid()
+			),
+		}, { detach = true })
+	end)
+end
