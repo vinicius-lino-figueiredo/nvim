@@ -6,7 +6,7 @@
   "cmp-path": { "branch": "main", "commit": "c642487086dbd9a93160e1679a1327be111cbc25" },
   "cmp-vsnip": { "branch": "main", "commit": "989a8a73c44e926199bfd05fa7a516d51f2d2752" },
   "dotenv.nvim": { "branch": "main", "commit": "7d516e9293c6e3ac21830fb10a4e8674c02747c6" },
-  "ecolog.nvim": { "branch": "main", "commit": "e4b2644a02d0b1c97a548ed93df6db13df90781f" },
+  "ecolog.nvim": { "branch": "v1", "commit": "d42edf9774626eb777aab526096a4315a6f45984" },
   "gitsigns.nvim": { "branch": "main", "commit": "42d6aed4e94e0f0bbced16bbdcc42f57673bd75e" },
   "go.nvim": { "branch": "master", "commit": "41a18f0c05534c375bafec7ed05cdb409c4abcc6" },
   "guihua.lua": { "branch": "master", "commit": "ef44ba40f12e56c1c9fa45967f2b4d142e4b97a0" },

@@ -156,6 +156,7 @@ return {
 	},
 	{
 		"ph1losof/ecolog.nvim",
+		branch = "v1",
 		-- Optional: you can add some keybindings
 		keys = {
 			{ "<leader>ge", "<cmd>EcologGoto<cr>", desc = "Go to env file" },
