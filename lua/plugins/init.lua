@@ -211,4 +211,16 @@ return {
 			require("markdown-table-mode").setup()
 		end,
 	},
+	{
+		"kristijanhusak/vim-dadbod-ui",
+		dependencies = {
+			"tpope/vim-dadbod", -- core plugin
+			"kristijanhusak/vim-dadbod-completion", -- autocompletion
+		},
+		cmd = { "DBUI", "DBUIToggle", "DBUIAddConnection" }, -- carregamento sob demanda
+		init = function()
+			-- ativar fontes nerd para ícones
+			vim.g.db_ui_use_nerd_fonts = 1
+		end,
+	},
 }
