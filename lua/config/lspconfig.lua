@@ -9,7 +9,6 @@ return {
 			debounce_text_changes = 150,
 		},
 	},
-	gopls = {},
 	ts_ls = {
 		on_attach = function(_, bufnr)
 			vim.api.nvim_set_option_value("tabstop", 2, { buf = bufnr })
@@ -29,10 +28,6 @@ return {
 			},
 		},
 	},
-	dockerls = {},
-	clangd = {},
-	lemminx = {},
-	bashls = {},
 	ols = {
 		init_options = {
 			checker_args = "-strict-style",
@@ -57,5 +52,4 @@ return {
 			end
 		end,
 	},
-	marksman = {},
 }
