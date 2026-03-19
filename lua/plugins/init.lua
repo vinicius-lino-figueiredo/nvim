@@ -12,15 +12,15 @@ return {
 		},
 	},
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
+		"vague-theme/vague.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other plugins
 		config = function()
-			require("catppuccin").setup({
-				flavour = "mocha", -- latte, frappe, macchiato, mocha
+			-- NOTE: you do not need to call setup if you don't want to.
+			require("vague").setup({
+				-- optional configuration here
 			})
-			-- setup must be called before loading
-			vim.cmd.colorscheme("catppuccin-nvim")
+			vim.cmd("colorscheme vague")
 		end,
 	},
 	{ "hrsh7th/nvim-cmp" },
