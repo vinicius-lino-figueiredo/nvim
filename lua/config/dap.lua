@@ -107,7 +107,7 @@ end)
 vim.keymap.set("n", "<Leader>dr", ":ReplTogle")
 vim.keymap.set("n", "<Leader>dl", ":DapRunkast<CR>")
 vim.keymap.set("n", "<Leader>X", ":DapTerminate<CR>")
-vim.keymap.set("n", "<Leader>w", ":DapUiToggle<CR>")
+vim.keymap.set("n", "<Leader>w", dapui.toggle)
 
 dap.listeners.after.event_stopped["notify_others"] = function(_, body)
 	if body.reason ~= "breakpoint" then
