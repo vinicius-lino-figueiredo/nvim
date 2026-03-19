@@ -223,4 +223,14 @@ return {
 			"neovim/nvim-lspconfig",
 		},
 	},
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		dependencies = { "mason-org/mason.nvim", "mfussenegger/nvim-dap" },
+		config = function()
+			require("mason-nvim-dap").setup({
+				automatic_installation = false,
+				handlers = {},
+			})
+		end,
+	},
 }
