@@ -44,12 +44,6 @@ return {
 	{ "nvim-neotest/nvim-nio" },
 	{ "junegunn/vim-easy-align" },
 	{ "nvimtools/none-ls.nvim" },
-
-	{
-		"mrcjkb/rustaceanvim",
-		version = "^5", -- Recommended
-		lazy = false, -- This plugin is already lazy
-	},
 	{ "b0o/schemastore.nvim" },
 	{
 		"johmsalas/text-case.nvim",
