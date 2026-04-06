@@ -61,7 +61,7 @@ vim.opt.colorcolumn = "81"
 
 require("vim._core.ui2").enable({})
 
-require("config.lazy")
+vim.pack.add(require("plugins"))
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",

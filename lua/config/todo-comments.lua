@@ -1,5 +1,0 @@
-require("todo-comments").setup({})
-require("telescope").load_extension("todo-comments")
-vim.keymap.set("n", "<leader>tt", function()
-	require("telescope").extensions["todo-comments"].todo()
-end, { desc = "Abrir TODOs com Telescope" })

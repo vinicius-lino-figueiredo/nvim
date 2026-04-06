@@ -1,230 +1,44 @@
 return {
-	{
-		"akinsho/toggleterm.nvim",
-		version = "*",
-	},
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
-		dependencies = {
-			"nvim-telescope/telescope-live-grep-args.nvim",
-			"nvim-lua/plenary.nvim",
-		},
-	},
-	{
-		"vague-theme/vague.nvim",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other plugins
-		config = function()
-			-- NOTE: you do not need to call setup if you don't want to.
-			require("vague").setup({
-				-- optional configuration here
-			})
-			vim.cmd("colorscheme vague")
-		end,
-	},
-	{ "hrsh7th/nvim-cmp" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/cmp-buffer" },
-	{ "hrsh7th/cmp-path" },
-	{ "hrsh7th/cmp-vsnip" },
-	{ "hrsh7th/vim-vsnip" },
-	{ "neovim/nvim-lspconfig" },
-	{
-		"L3MON4D3/LuaSnip",
-		-- follow latest release.
-		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-		-- install jsregexp (optional!).
-		build = "make install_jsregexp",
-	},
-	{ "lewis6991/gitsigns.nvim" },
-	{ "ellisonleao/dotenv.nvim" },
-	{ "mfussenegger/nvim-dap" },
-	{ "rcarriga/nvim-dap-ui" },
-	{ "nvim-neotest/nvim-nio" },
-	{ "junegunn/vim-easy-align" },
-	{ "nvimtools/none-ls.nvim" },
-	{ "b0o/schemastore.nvim" },
-	{
-		"johmsalas/text-case.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = function()
-			require("textcase").setup({})
-			require("telescope").load_extension("textcase")
-		end,
-		keys = {
-			"ga", -- Default invocation prefix
-			{ "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Telescope" },
-		},
-		cmd = {
-			-- NOTE: The Subs command name can be customized via the option "substitude_command_name"
-			"Subs",
-			"TextCaseOpenTelescope",
-			"TextCaseOpenTelescopeQuickChange",
-			"TextCaseOpenTelescopeLSPChange",
-			"TextCaseStartReplacingCommand",
-		},
-		-- If you want to use the interactive feature of the `Subs` command right away, text-case.nvim
-		-- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
-		-- available after the first executing of it or after a keymap of text-case.nvim has been used.
-		lazy = false,
-	},
-	{
-		"folke/todo-comments.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
-	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-	},
-	{
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	{
-		"mason-org/mason.nvim",
-		config = true,
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				auto_install = true,
-				highlight = {
-					enable = true,
-				},
-			})
-		end,
-	},
-	{
-		"chentoast/marks.nvim",
-		event = "VeryLazy",
-		opts = {},
-	},
-	{
-		"lukas-reineke/virt-column.nvim",
-		opts = {},
-	},
-	{
-		"ray-x/lsp_signature.nvim",
-		event = "InsertEnter",
-		opts = {
-			-- cfg options
-		},
-	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			"nvim-tree/nvim-web-devicons",
-		},
-		keys = {
-			{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
-		},
-		lazy = false,
-	},
-	{
-		"ph1losof/ecolog.nvim",
-		branch = "v1",
-		-- Optional: you can add some keybindings
-		keys = {
-			{ "<leader>ge", "<cmd>EcologGoto<cr>", desc = "Go to env file" },
-			{ "<leader>pp", "<cmd>EcologShelterLinePeek<cr>", desc = "Ecolog peek variable" },
-			{ "<leader>es", "<cmd>EcologSelect<cr>", desc = "Switch env file" },
-		},
-		-- Lazy loading is done internally
-		lazy = false,
-		-- config = function()
-		-- 	-- require("telescope").load_extension("ecolog")
-		-- end,
-		opts = {
-			integrations = { nvim_cmp = true },
-			-- Enables shelter mode for sensitive values
-			shelter = {
-				configuration = {
-					-- Partial mode configuration:
-					-- false: completely mask values (default)
-					-- true: use default partial masking settings
-					-- table: customize partial masking
-					-- partial_mode = false,
-					-- or with custom settings:
-					partial_mode = false,
-					mask_char = " ", -- Character used for masking
-					mask_length = nil, -- Optional: fixed length for masked portion (defaults to value length)
-					skip_comments = true, -- Skip masking comment lines in environment files (default: false)
-				},
-				modules = {
-					cmp = true, -- Enabled to mask values in completion
-					peek = false, -- Enable to mask values in peek view
-					files = true, -- Enabled to mask values in file buffers
-					telescope = false, -- Enable to mask values in telescope integration
-					telescope_previewer = true, -- Enable to mask values in telescope preview buffers
-					fzf = false, -- Enable to mask values in fzf picker
-					fzf_previewer = false, -- Enable to mask values in fzf preview buffers
-					snacks_previewer = false, -- Enable to mask values in snacks previewer
-					snacks = false, -- Enable to mask values in snacks picker
-				},
-			},
-			-- true by default, enables built-in types (database_url, url, etc.)
-			types = true,
-			path = vim.fn.getcwd(), -- Path to search for .env files
-			preferred_environment = "development", -- Optional: prioritize specific env files
-			-- Controls how environment variables are extracted from code and how cmp works
-			provider_patterns = true, -- true by default, when false will not check provider patterns
-		},
-	},
-	{ "rcarriga/nvim-notify" },
-	{
-		"Kicamon/markdown-table-mode.nvim",
-		config = function()
-			require("markdown-table-mode").setup()
-		end,
-	},
-	{
-		"kristijanhusak/vim-dadbod-ui",
-		dependencies = {
-			"tpope/vim-dadbod", -- core plugin
-			"kristijanhusak/vim-dadbod-completion", -- autocompletion
-		},
-		cmd = { "DBUI", "DBUIToggle", "DBUIAddConnection" }, -- carregamento sob demanda
-		init = function()
-			-- ativar fontes nerd para ícones
-			vim.g.db_ui_use_nerd_fonts = 1
-		end,
-	},
-	{
-		"jakewaldrip/vimscape2007.nvim",
-		version = "*",
-		opts = {},
-	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		opts = {},
-		dependencies = {
-			{ "mason-org/mason.nvim", opts = {} },
-			"neovim/nvim-lspconfig",
-		},
-	},
-	{
-		"jay-babu/mason-nvim-dap.nvim",
-		dependencies = { "mason-org/mason.nvim", "mfussenegger/nvim-dap" },
-		config = function()
-			require("mason-nvim-dap").setup({
-				automatic_installation = false,
-				handlers = {},
-			})
-		end,
-	},
+	{ src = "https://github.com/akinsho/toggleterm.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
+	{ src = "https://github.com/vague-theme/vague.nvim" },
+	{ src = "https://github.com/hrsh7th/nvim-cmp" },
+	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
+	{ src = "https://github.com/hrsh7th/cmp-buffer" },
+	{ src = "https://github.com/hrsh7th/cmp-path" },
+	{ src = "https://github.com/hrsh7th/cmp-vsnip" },
+	{ src = "https://github.com/hrsh7th/vim-vsnip" },
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/L3MON4D3/LuaSnip", version = vim.version.range("2.x") },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+	{ src = "https://github.com/ellisonleao/dotenv.nvim" },
+	{ src = "https://github.com/mfussenegger/nvim-dap" },
+	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
+	{ src = "https://github.com/nvim-neotest/nvim-nio" },
+	{ src = "https://github.com/junegunn/vim-easy-align" },
+	{ src = "https://github.com/nvimtools/none-ls.nvim" },
+	{ src = "https://github.com/b0o/schemastore.nvim" },
+	{ src = "https://github.com/johmsalas/text-case.nvim" },
+	{ src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+	{ src = "https://github.com/chentoast/marks.nvim" },
+	{ src = "https://github.com/ray-x/lsp_signature.nvim" },
+	{ src = "https://github.com/nvim-neo-tree/neo-tree.nvim", version = vim.version.range("3.x") },
+	{ src = "https://github.com/MunifTanjim/nui.nvim" },
+	{ src = "https://github.com/ph1losof/ecolog.nvim" },
+	{ src = "https://github.com/Kicamon/markdown-table-mode.nvim" },
+	{ src = "https://github.com/kristijanhusak/vim-dadbod-ui" },
+	{ src = "https://github.com/kristijanhusak/vim-dadbod" },
+	{ src = "https://github.com/jakewaldrip/vimscape2007.nvim" },
+	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+	{ src = "https://github.com/jay-babu/mason-nvim-dap.nvim" },
+	{ src = "https://github.com/nvim-lua/plenary.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim" },
+	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+	{ src = "https://github.com/rcarriga/nvim-notify" },
+	{ src = "https://github.com/folke/todo-comments.nvim" },
+	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
+	{ src = "https://github.com/lukas-reineke/virt-column.nvim" },
+	{ src = "https://github.com/mason-org/mason.nvim" },
 }
