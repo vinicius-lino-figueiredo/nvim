@@ -59,6 +59,8 @@ vim.g.mapleader = " "
 vim.opt.number = true
 vim.opt.colorcolumn = "81"
 
+require("vim._core.ui2").enable({})
+
 require("config.lazy")
 
 vim.api.nvim_create_autocmd("BufWritePre", {
