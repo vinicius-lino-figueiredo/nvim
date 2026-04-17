@@ -1,7 +1,6 @@
 return {
 	{ src = "https://github.com/akinsho/toggleterm.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
-	{ src = "https://github.com/vague-theme/vague.nvim" },
 	{ src = "https://github.com/hrsh7th/nvim-cmp" },
 	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
 	{ src = "https://github.com/hrsh7th/cmp-buffer" },

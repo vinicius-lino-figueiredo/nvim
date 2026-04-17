@@ -1,3 +1,7 @@
+vim.cmd.colorscheme("habamax")
+-- Impedindo que a borda do habamax fique com fg=bg
+vim.api.nvim_set_hl(0, "FloatBorder", { link = "NormalFloat" })
+
 -- Set <space> as the leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

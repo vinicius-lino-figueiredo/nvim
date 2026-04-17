@@ -143,10 +143,6 @@
       "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
       "src": "https://github.com/akinsho/toggleterm.nvim"
     },
-    "vague.nvim": {
-      "rev": "520a7bec9642fe37e4b161c3b1864b35bc15d811",
-      "src": "https://github.com/vague-theme/vague.nvim"
-    },
     "vim-dadbod": {
       "rev": "22d97dcb91e12685caa1b4ec25bbbb6ee48ccdef",
       "src": "https://github.com/kristijanhusak/vim-dadbod"
