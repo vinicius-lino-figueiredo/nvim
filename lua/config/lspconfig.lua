@@ -9,7 +9,6 @@ return {
 			debounce_text_changes = 150,
 		},
 	},
-	gopls = {},
 	ts_ls = {
 		on_attach = function(_, bufnr)
 			vim.api.nvim_set_option_value("tabstop", 2, { buf = bufnr })
@@ -21,7 +20,13 @@ return {
 	lua_ls = {
 		settings = {
 			Lua = {
-				workspace = { checkThirdParty = false, library = vim.api.nvim_get_runtime_file("", true) },
+				workspace = {
+					checkThirdParty = false,
+					library = {
+						vim.env.VIMRUNTIME,
+						vim.fn.stdpath("config"),
+					},
+				},
 				telemetry = { enable = false },
 				diagnostics = {
 					globals = { "vim" },
@@ -29,10 +34,6 @@ return {
 			},
 		},
 	},
-	dockerls = {},
-	clangd = {},
-	lemminx = {},
-	bashls = {},
 	ols = {
 		init_options = {
 			checker_args = "-strict-style",

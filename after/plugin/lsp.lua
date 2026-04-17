@@ -59,3 +59,10 @@ for key, value in pairs(configs) do
 	vim.lsp.config(key, value)
 	vim.lsp.enable(key)
 end
+
+require("lsp_signature").setup({
+	bind = true,
+	handler_opts = {
+		border = "rounded",
+	},
+})

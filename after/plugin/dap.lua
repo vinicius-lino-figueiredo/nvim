@@ -5,6 +5,15 @@ dapui.setup({
 	layouts = {
 		{
 			elements = {
+				{ id = "breakpoints", size = 0.25 },
+				{ id = "stacks", size = 0.25 },
+				{ id = "watches", size = 0.25 },
+			},
+			size = 40,
+			position = "left",
+		},
+		{
+			elements = {
 				"repl",
 			},
 			size = 10,
@@ -98,7 +107,7 @@ end)
 vim.keymap.set("n", "<Leader>dr", ":ReplTogle")
 vim.keymap.set("n", "<Leader>dl", ":DapRunkast<CR>")
 vim.keymap.set("n", "<Leader>X", ":DapTerminate<CR>")
-vim.keymap.set("n", "<Leader>w", ":DapUiToggle<CR>")
+vim.keymap.set("n", "<Leader>w", dapui.toggle)
 
 dap.listeners.after.event_stopped["notify_others"] = function(_, body)
 	if body.reason ~= "breakpoint" then

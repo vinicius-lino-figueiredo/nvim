@@ -1,3 +1,7 @@
+vim.cmd.colorscheme("habamax")
+-- Impedindo que a borda do habamax fique com fg=bg
+vim.api.nvim_set_hl(0, "FloatBorder", { link = "NormalFloat" })
+
 -- Set <space> as the leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -59,7 +63,26 @@ vim.g.mapleader = " "
 vim.opt.number = true
 vim.opt.colorcolumn = "81"
 
-require("config.lazy")
+require("vim._core.ui2").enable({})
+
+vim.pack.add(require("plugins"))
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	once = true,
+	callback = function()
+		local orphans = vim.iter(vim.pack.get())
+			:filter(function(x)
+				return not x.active
+			end)
+			:map(function(x)
+				return x.spec.name
+			end)
+			:totable()
+		if #orphans > 0 then
+			vim.pack.del(orphans)
+		end
+	end,
+})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
