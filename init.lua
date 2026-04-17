@@ -63,6 +63,23 @@ require("vim._core.ui2").enable({})
 
 vim.pack.add(require("plugins"))
 
+vim.api.nvim_create_autocmd("VimEnter", {
+	once = true,
+	callback = function()
+		local orphans = vim.iter(vim.pack.get())
+			:filter(function(x)
+				return not x.active
+			end)
+			:map(function(x)
+				return x.spec.name
+			end)
+			:totable()
+		if #orphans > 0 then
+			vim.pack.del(orphans)
+		end
+	end,
+})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	callback = function()
