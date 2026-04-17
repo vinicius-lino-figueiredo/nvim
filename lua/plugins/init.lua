@@ -23,7 +23,6 @@ return {
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/chentoast/marks.nvim" },
 	{ src = "https://github.com/ray-x/lsp_signature.nvim" },
-	{ src = "https://github.com/nvim-neo-tree/neo-tree.nvim", version = vim.version.range("3.x") },
 	{ src = "https://github.com/MunifTanjim/nui.nvim" },
 	{ src = "https://github.com/ph1losof/ecolog.nvim" },
 	{ src = "https://github.com/Kicamon/markdown-table-mode.nvim" },
@@ -40,4 +39,5 @@ return {
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/lukas-reineke/virt-column.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/stevearc/oil.nvim.git" },
 }
