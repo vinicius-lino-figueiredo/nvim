@@ -143,14 +143,6 @@
       "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
       "src": "https://github.com/akinsho/toggleterm.nvim"
     },
-    "vim-dadbod": {
-      "rev": "22d97dcb91e12685caa1b4ec25bbbb6ee48ccdef",
-      "src": "https://github.com/kristijanhusak/vim-dadbod"
-    },
-    "vim-dadbod-ui": {
-      "rev": "07e92e22114cc5b1ba4938d99897d85b58e20475",
-      "src": "https://github.com/kristijanhusak/vim-dadbod-ui"
-    },
     "vim-easy-align": {
       "rev": "9815a55dbcd817784458df7a18acacc6f82b1241",
       "src": "https://github.com/junegunn/vim-easy-align"
