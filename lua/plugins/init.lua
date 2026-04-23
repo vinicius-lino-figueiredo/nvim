@@ -24,7 +24,6 @@ return {
 	{ src = "https://github.com/MunifTanjim/nui.nvim" },
 	{ src = "https://github.com/ph1losof/ecolog.nvim" },
 	{ src = "https://github.com/Kicamon/markdown-table-mode.nvim" },
-	{ src = "https://github.com/jakewaldrip/vimscape2007.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/jay-babu/mason-nvim-dap.nvim" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
