@@ -15,7 +15,6 @@ return {
 	{ src = "https://github.com/junegunn/vim-easy-align" },
 	{ src = "https://github.com/nvimtools/none-ls.nvim" },
 	{ src = "https://github.com/b0o/schemastore.nvim" },
-	{ src = "https://github.com/johmsalas/text-case.nvim" },
 	{ src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
