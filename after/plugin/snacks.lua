@@ -1,5 +1,20 @@
 local snacks = require("snacks")
-snacks.setup({})
+snacks.setup({
+	terminal = {
+		enabled = true,
+		win = {
+			position = "float",
+			border = "rounded",
+		},
+	},
+})
+
+-- [Terminal] ----------
+
+-- snacks.terminal()
+vim.keymap.set({ "n", "t" }, "<C-]>", snacks.terminal.toggle, { desc = "Snacks find files" })
+
+-- [Picker] ----------
 
 vim.keymap.set("n", "<leader>ff", snacks.picker.files, { desc = "Snacks find files" })
 
