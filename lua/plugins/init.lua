@@ -1,6 +1,5 @@
 return {
 	{ src = "https://github.com/akinsho/toggleterm.nvim" },
-	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{ src = "https://github.com/hrsh7th/nvim-cmp" },
 	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
 	{ src = "https://github.com/hrsh7th/cmp-buffer" },
@@ -30,7 +29,6 @@ return {
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/jay-babu/mason-nvim-dap.nvim" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
-	{ src = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/rcarriga/nvim-notify" },
 	{ src = "https://github.com/folke/todo-comments.nvim" },
@@ -38,4 +36,5 @@ return {
 	{ src = "https://github.com/lukas-reineke/virt-column.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim.git" },
+	{ src = "https://github.com/folke/snacks.nvim" },
 }
