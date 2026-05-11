@@ -35,4 +35,5 @@ return {
 	{ src = "https://github.com/stevearc/oil.nvim.git" },
 	{ src = "https://github.com/folke/snacks.nvim" },
 	{ src = "https://github.com/m4xshen/hardtime.nvim" },
+	{ src = "https://codeberg.org/andyg/leap.nvim" },
 }

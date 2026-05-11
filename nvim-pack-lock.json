@@ -42,6 +42,10 @@
       "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
     },
+    "leap.nvim": {
+      "rev": "940bc5e716a8cde63bd47e1b13f30fd9075ec0c8",
+      "src": "https://codeberg.org/andyg/leap.nvim"
+    },
     "lsp_signature.nvim": {
       "rev": "a381eb443cae078541297dc71674fa9c95e52a9e",
       "src": "https://github.com/ray-x/lsp_signature.nvim"
