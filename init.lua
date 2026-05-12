@@ -2,6 +2,8 @@ vim.cmd.colorscheme("habamax")
 -- Impedindo que a borda do habamax fique com fg=bg
 vim.api.nvim_set_hl(0, "FloatBorder", { link = "NormalFloat" })
 
+require("vim._core.ui2").enable({})
+
 -- Set <space> as the leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -40,6 +42,12 @@ vim.o.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 10
 
+-- Tamanho esperado de texto
+vim.opt.textwidth = 80
+
+-- Coluna de limite de tamanho de texto
+vim.opt.colorcolumn = "+1"
+
 -- [[ Basic Keymaps ]]
 
 -- Disable arrow keys in normal mode
@@ -59,13 +67,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.g.mapleader = " "
-vim.opt.number = true
-vim.opt.colorcolumn = "81"
-
-require("vim._core.ui2").enable({})
-
-vim.pack.add(require("plugins"))
+-- auto format
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function()
+		vim.lsp.buf.format()
+	end,
+})
 
 vim.api.nvim_create_autocmd("VimEnter", {
 	once = true,
@@ -84,17 +92,4 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function()
-		vim.lsp.buf.format()
-	end,
-})
-vim.filetype.add({
-	filename = {
-		[".env"] = ".env",
-	},
-	pattern = {
-		["%.env%..*"] = ".env",
-	},
-})
+vim.pack.add(require("plugins"))

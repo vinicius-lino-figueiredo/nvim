@@ -33,10 +33,18 @@
       "rev": "77b813d1aa6a180d903dc744fc81d7e05b138ac2",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "hardtime.nvim": {
+      "rev": "b4e431934af1fe224a3a801f632c008278cb7628",
+      "src": "https://github.com/m4xshen/hardtime.nvim"
+    },
     "harpoon": {
       "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
       "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
+    },
+    "leap.nvim": {
+      "rev": "940bc5e716a8cde63bd47e1b13f30fd9075ec0c8",
+      "src": "https://codeberg.org/andyg/leap.nvim"
     },
     "lsp_signature.nvim": {
       "rev": "a381eb443cae078541297dc71674fa9c95e52a9e",
@@ -123,25 +131,13 @@
       "rev": "6d0329adb9c8cbe51b9a28299890a5eb104db7dc",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
-    "telescope-live-grep-args.nvim": {
-      "rev": "b80ec2c70ec4f32571478b501218c8979fab5201",
-      "src": "https://github.com/nvim-telescope/telescope-live-grep-args.nvim"
-    },
-    "telescope.nvim": {
-      "rev": "cfb85dcf7f822b79224e9e6aef9e8c794211b20b",
-      "src": "https://github.com/nvim-telescope/telescope.nvim"
-    },
-    "text-case.nvim": {
-      "rev": "e898cfd46fa6cde0e83abb624a16e67d2ffc6457",
-      "src": "https://github.com/johmsalas/text-case.nvim"
+    "snacks.nvim": {
+      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
+      "src": "https://github.com/folke/snacks.nvim"
     },
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
-    },
-    "toggleterm.nvim": {
-      "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
-      "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "vim-easy-align": {
       "rev": "9815a55dbcd817784458df7a18acacc6f82b1241",
@@ -150,10 +146,6 @@
     "vim-vsnip": {
       "rev": "9bcfabea653abdcdac584283b5097c3f8760abaa",
       "src": "https://github.com/hrsh7th/vim-vsnip"
-    },
-    "vimscape2007.nvim": {
-      "rev": "f84c807f1bbadfe6059b383bc1b76eedb8e09df3",
-      "src": "https://github.com/jakewaldrip/vimscape2007.nvim"
     },
     "virt-column.nvim": {
       "rev": "b87e3e0864211a32724a2ebf3be37e24e9e2fa99",
